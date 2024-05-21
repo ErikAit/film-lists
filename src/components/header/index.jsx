@@ -4,7 +4,7 @@ import HeaderCenterPart from './header-center-part/HeaderCenterPart'
 export default function Header() {
   return (
     <>
-      <header className='header w-full h-screen bg-[url(https://assets.nflxext.com/ffe/siteui/vlv3/41c789f0-7df5-4219-94c6-c66fe500590a/947fcbf2-f0d8-416b-833c-ad162a672a31/AM-ru-20240513-popsignuptwoweeks-perspective_alpha_website_small.jpg)] bg-cover'>
+      <header className='header relative w-full h-screen bg-[url(https://assets.nflxext.com/ffe/siteui/vlv3/41c789f0-7df5-4219-94c6-c66fe500590a/947fcbf2-f0d8-416b-833c-ad162a672a31/AM-ru-20240513-popsignuptwoweeks-perspective_alpha_website_small.jpg)] bg-cover'>
 
         <div className="header-content text-white flex items-center justify-between px-[13px] font-[600]">
           <div className="logo z-30 ml-4">
@@ -28,7 +28,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="main">
+        <div className="main z-10 absolute top-0 w-full">
           <HeaderCenterPart />
         </div>
 
