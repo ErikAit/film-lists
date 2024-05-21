@@ -1,4 +1,5 @@
 import React from 'react'
+import HeaderCenterPart from './header-center-part/HeaderCenterPart'
 
 export default function Header() {
   return (
@@ -26,6 +27,11 @@ export default function Header() {
             </div>
           </div>
         </div>
+
+        <div className="main">
+          <HeaderCenterPart />
+        </div>
+
         <div className="overlay w-full h-screen absolute top-0 left-0 bg-black opacity-[0.6]"></div>
       </header>
     </>
