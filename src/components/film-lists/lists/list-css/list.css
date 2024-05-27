@@ -1,0 +1,36 @@
+.list {
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.list.selected {
+  border-color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes borderExpand {
+  0% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+
+@keyframes borderContract {
+  0% {
+    border-color: white;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+.list.selected {
+  animation: borderExpand 0.3s forwards;
+}
+
+.list:not(.selected) {
+  animation: borderContract 0.3s forwards;
+}

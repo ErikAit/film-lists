@@ -1,9 +1,11 @@
 import React from 'react';
 
+import './list-css/list.css';
+
 const List = React.forwardRef(({ film, handleSelectMovie, isSelected }, ref) => (
   <div
     ref={ref}
-    className={`list w-[300px] text-white cursor-pointer ${isSelected === true ? 'border-[1px] border-white font-[600]' : ''} rounded-[9px] p-3`}
+    className={`list w-[300px] text-white cursor-pointer ${isSelected ? 'selected font-[600]' : ''} rounded-[9px] p-3`}
     onClick={() => handleSelectMovie(film)}
   >
     <img

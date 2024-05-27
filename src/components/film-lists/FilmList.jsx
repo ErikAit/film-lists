@@ -4,6 +4,7 @@ import List from './lists/List';
 export default function FilmList() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(0);
+  const [border, setBorder] = useState(false);
   const movieRefs = useRef([]);
 
   useEffect(() => {
@@ -24,9 +25,9 @@ export default function FilmList() {
         } else if (event.key === 'ArrowLeft') {
           setSelectedMovie(index => Math.max(index - 1, 0));
         } else if (event.key === 'ArrowDown') {
-          setSelectedMovie(index => Math.min(index + 10, movies.length - 1));
+          setSelectedMovie(index => Math.min(index + Math.ceil(movies.length / 2), movies.length - 1));
         } else if (event.key === 'ArrowUp') {
-          setSelectedMovie(index => Math.max(index - 10, 0));
+          setSelectedMovie(index => Math.max(index - Math.ceil(movies.length / 2), 0));
         }
       }
     };
@@ -55,12 +56,13 @@ export default function FilmList() {
 
       <div className="selected-movie my-[40px]">
         {movies.length > 0 && (
-          <div className='flex justify-center'>
+          <div className='pl-[25px]'>
             <div
-              className="film-bg w-[700px] h-[400px] bg-cover relative border-[1px] border-white rounded-md"
-              style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movies[selectedMovie].backdrop_path})` }}
+              className="film-bg rounded-md w-[1300px] h-[600px] bg-cover relative"
+              style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movies[selectedMovie].backdrop_path})` }}
             >
-              <h1 className='text-white font-[600] text-[32px] absolute bottom-[10px] left-[10px]'>{movies[selectedMovie].title}</h1>
+              <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
+              <h1 className='text-white font-[600] text-[32px] absolute bottom-[25%] left-[10px]'>{movies[selectedMovie].title}</h1>
             </div>
           </div>
         )}
@@ -68,12 +70,23 @@ export default function FilmList() {
 
       <div className="movies-container">
         <div className="movies w-full h-[290px] my-3 overflow-hidden overflow-x-hidden grid grid-cols-10 px-[20px] gap-[20px] gap-x-[300px]" >
-          {movies.map((info, index) => (
+          {movies.slice(0, Math.ceil(movies.length / 2)).map((info, index) => (
             <List
               ref={movieRefs.current[index]}
               film={info}
               isSelected={index === selectedMovie}
               handleSelectMovie={() => handleSelectMovie(index)}
+              key={info.id}
+            />
+          ))}
+        </div>
+        <div className="movies w-full h-[290px] my-3 overflow-hidden overflow-x-hidden grid grid-cols-10 px-[20px] gap-[20px] gap-x-[300px]" >
+          {movies.slice(Math.ceil(movies.length / 2)).map((info, index) => (
+            <List
+              ref={movieRefs.current[index + Math.ceil(movies.length / 2)]}
+              film={info}
+              isSelected={(index + Math.ceil(movies.length / 2)) === selectedMovie}
+              handleSelectMovie={() => handleSelectMovie(index + Math.ceil(movies.length / 2))}
               key={info.id}
             />
           ))}
