@@ -1,36 +1,37 @@
 .list {
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  border: 2px solid transparent;
-  box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+  transition: border 0.7s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 transparent;
+  background-color: black;
 }
 
 .list.selected {
-  border-color: white;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  border-color: rgb(196, 26, 26);
+  box-shadow: 0 -20px 16px rgba(212, 128, 128, 0.5);
 }
 
 @keyframes borderExpand {
   0% {
-    border-color: transparent;
+    border-color: rgb(71, 71, 71);
   }
   100% {
-    border-color: white;
+    border-color: rgb(196, 26, 26);
   }
 }
 
 @keyframes borderContract {
   0% {
-    border-color: white;
+    border-color: rgb(71, 71, 71);
   }
   100% {
-    border-color: transparent;
+    border-color: rgb(71, 71, 71);
   }
 }
 
 .list.selected {
-  animation: borderExpand 0.3s forwards;
+  animation: borderExpand 0.7s forwards;
 }
 
 .list:not(.selected) {
-  animation: borderContract 0.3s forwards;
+  animation: borderContract 0.7s forwards;
 }
