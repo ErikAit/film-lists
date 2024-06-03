@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import List from './lists/List';
 import './lists/list-css/filmlist.css';
+import List from './lists/List';
 
 export default function FilmList() {
   const [movies, setMovies] = useState([]);
@@ -9,11 +9,11 @@ export default function FilmList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response1 = await fetch('https://api.themoviedb.org/3/search/movie?api_key=877a0b91e805fb63c2bb7e48097344dc&query=batman&page=1');
-      const data1 = await response1.json();
+      const fetch1 = await fetch('https://api.themoviedb.org/3/search/movie?api_key=877a0b91e805fb63c2bb7e48097344dc&query=batman&page=1');
+      const data1 = await fetch1.json();
 
-      const response2 = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=d91b4b2e8fb2707acd809975c49bcf87&query=');
-      const data2 = await response2.json();
+      const fetch2 = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=d91b4b2e8fb2707acd809975c49bcf87&query=');
+      const data2 = await fetch2.json();
 
       setMovies([...data1.results, ...data2.results]);
     };
